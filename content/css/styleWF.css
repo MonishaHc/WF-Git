@@ -1,0 +1,703 @@
+﻿ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    /*font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;*/
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Lato', sans-serif;
+    -webkit-animation: fadein 1.5s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1.5s; /* Firefox < 16 */
+    -ms-animation: fadein 1.5s; /* Internet Explorer */
+    -o-animation: fadein 1.5s; /* Opera < 12.1 */
+    animation: fadein 1.5s;
+}
+
+h1, h2, h3, h4, h5, h6, a, i, b, ul, ol, li, p, strong, span, label {
+    margin: 0;
+    padding: 0;
+}
+
+.head_secrs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 17px -7px 12px 12px #ccc;
+    min-height: 50px;
+    align-items: center;
+    background: #a8e9cb;
+    padding: 19px 210px;
+    padding-right: 92px;
+}
+
+
+.icnsmenurs {
+    width: 40px;
+}
+
+.icnsrs {
+    width: 30px;
+}
+
+.flt {
+    display: flex;
+    width: 160px;
+    justify-content: space-between;
+}
+
+.icnsmenurs i {
+    font-size: 20px;
+}
+
+.icnsrs i {
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.icons2 i {
+    margin-left: 9px;
+}
+
+.icnsrs span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group.my_cust input, .my_cust select {
+    border-radius: 10px;
+    padding: 4px 24px;
+}
+
+.drp {
+    padding: 8px 50px;
+    background: #e0e5e9;
+    border-radius: 8px;
+    box-shadow: -2px 2px 9px 0px #9e9a9ac4;
+    /*margin-top: 50px;*/
+}
+
+.secnd_sec {
+    padding: 11px 80px;
+}
+
+.my_cust select.form-control:not([size]):not([multiple]) {
+    height: 32px;
+}
+
+label.grpp_by_filrs {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.accnt_hd h2 {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.accnt_hd {
+    /*background: #a8e9cb;*/
+    background: #1e4f77;
+    color:white;
+    padding: 8px 44px;
+}
+
+.fields {
+    /*padding: 8px 44px;*/
+    margin-top: 8px;
+   padding: 0px 20px 0 20px; /*07-02-2020 Archana Srishti*/
+}
+
+.fieldss {
+    margin-top: 8px;
+    padding: 0px 30px;
+}
+
+.Third_sec {
+    padding: 6px 40px;
+}
+/*radiobutton css start*/
+/* The container */
+.raditms {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 10px;
+}
+
+    /* Hide the browser's default radio button */
+    .raditms input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #a7a4a4;
+    ;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.raditms:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.raditms input:checked ~ .checkmark {
+    /*background-color: #a8e9cb;*/
+    background-color: #1e4f77;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.raditms input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.raditms .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/*radiobutton css end*/
+.form-group.my_cust.Radcus {
+    display: flex;
+}
+
+label.flds_fil {
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.accntn {
+    background: #ffff;
+    position: relative;
+}
+
+.money {
+    margin-top: 22px;
+}
+
+.form-group.my_cust_fiend input, .my_cust select {
+    border-radius: 4px;
+    padding: 0px 22px;
+    background: #ececec;
+    font-size: 12px;
+    height: 28px; /*Basheer on 13-07-2020*/
+}
+
+.my_cust_fiend textarea {
+    border-radius: 4px;
+    background: #ececec;
+}
+
+.main_secrs {
+    background: #f3f3f3;
+    margin: 12px 12px 13px 15px;
+    box-shadow: -6px -1px 9px 0px #ccc;
+    position: relative;
+}
+
+.custone {
+    margin-top: 36px;
+}
+
+.accntn.yellow {
+    padding: 21px 49px;
+    background: #a8e9cb;
+    color: #212020;
+    line-height: 31px;
+}
+
+.cusmz {
+    padding: 0px 210px;
+    margin-top: 28px;
+}
+
+.footer {
+    background: #1b242b;
+    padding: 12px 10px;
+    margin-top: 186px;
+    font-size: 12px;
+}
+
+    .footer p {
+        color: #fff;
+        text-align: center;
+    }
+
+.but button {
+    background: #a8e9cb;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 5px 30px;
+    font-size: 12px;
+}
+
+.but {
+    padding: 0px 0px;
+    margin-bottom: 28px;
+    margin-top: 20px;
+}
+
+.byt {
+    padding: 0px 14px;
+}
+
+.form-group.Radcus .cust_fle {
+    padding: 0px 0px;
+    border-radius: 4px;
+    background: #f3f3f3;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.Attachment {
+    margin-top: 20px;
+}
+
+.form-control {
+    background: #f3f3f3;
+}
+
+.form-group.my_cust.Radcus.rad_gap {
+    margin-top: 12px;
+}
+
+.form-group .form-control::placeholder {
+    font-size: 13px;
+}
+
+.form-control:focus {
+    border-color: #ffff;
+    box-shadow: 0;
+}
+
+button.btn.red {
+    background: #f70000;
+    color: #fff;
+}
+
+button.btn.green {
+    background: #10750add;
+    color: #fff;
+}
+
+
+
+.bnk {
+    display: none;
+}
+
+.sml_hd h2 {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 0px 30px;
+}
+
+.sml_hd {
+    padding: 7px 11px;
+}
+
+.mar20 {
+    margin-top: 15px;
+}
+
+.form-group.Radcus input {
+    height: 25px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+h2.sub_head {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.href_btn {
+    background: #3f7aab;
+    color: #fff;
+}
+
+.Third_sec.Third_sec2 {
+    margin-top: 5px;
+}
+
+.form-group.my_cust_fiend {
+    /*padding: 0px 24px;*/
+}
+
+/*// Terrin on 28-05-2020*/
+.training-rs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*label.flds_fil.rw-rs-m {
+    margin-bottom: 22px;
+}*/
+
+.rw-rs-m {
+    margin-bottom: 22px !important;
+}
+
+.form-group.t.my_cust_fiend.rs-bwrapp {
+    width: 31%;
+}
+
+textarea.form-control {
+    height: 50px !important;
+    font-size: 14px;
+}
+
+span {
+    font-size: 10px;
+}
+
+label {
+    font-size: 12px !important;
+}
+
+.accnt_hd2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.canEditThis {
+    background: white !important;
+}
+
+.request_buttons {
+    /*position:absolute;*/
+    width: 16px !important;
+    height: 16px !important;
+    display: block;
+    /* text-align: center; */
+    margin: auto;
+}
+
+.button_after_success {
+    cursor: inherit !important;
+}
+
+
+/*==============02-01-2020 Travel Allowance ---------------*/
+.fields.fields-rs-cust {
+    padding: 8px 59px;
+}
+
+    .fields.fields-rs-cust .row p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+.inner-fields-itms {
+    margin-top: 15px;
+}
+
+.form-group.my_cust_fiend select {
+    height: 26px !important;
+    padding: 0px 6px; /*-- 07-05-2020 jaseem--*/
+    font-size: 12px;
+}
+
+.col-12.rs-main-head-2 {
+    padding: 0px 0px;
+}
+
+.row.rs-rw-inner {
+    background: #dad9d9;
+    padding: 30px 5px;
+    margin: 16px 2px;
+}
+
+.flds_fil2 {
+    font-size: 9px !important;
+}
+
+.flds_fil3 {
+    margin-right: 10px !important;
+}
+
+.col-lg-6.colrs-mar20 {
+    margin-top: 15px;
+}
+
+.flds_fil4 {
+    font-size: 9px !important;
+}
+
+.cust-rs123 {
+    font-size: 9px !important;
+}
+
+.table-enter-rs .table thead tr th {
+    font-size: 13px;
+}
+
+.form-group.my_cust_fiend.ra-inner-rc-wed label {
+    margin-right: 15px;
+}
+
+.form-group.my_cust_fiend.ra-inner-rc-wed {
+    display: flex;
+}
+/*.accnt_hd.accnt_hd2 {
+    background: #fff;
+    padding: 0px 59px;
+}*/
+.accnt_hd.accnt_hd2 h2 {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+p.pad-rs {
+    padding: 0px 15px;
+}
+
+    p.pad-rs a {
+        font-weight: 600;
+        cursor: pointer;
+        color: #000;
+        text-decoration: none;
+    }
+
+.rs-prehd.accnt_hd2 h2 {
+    font-size: 16px;
+    margin: 10px 0px;
+    font-weight: 600;
+}
+
+.set_padding {
+    padding: 4px !important;
+}
+
+.row.bor-rs-2020 {
+    margin: 1px;
+    border: 1px solid #ccc;
+    padding: 12px 5px;
+}
+
+.chkbc-rs-dsp {
+    display: flex;
+}
+
+.qty_button {
+    width: 140px;
+    display: initial;
+    margin-left: 3px;
+}
+
+.rent_car_details_section.row {
+    padding: 0px 15px;
+}
+
+.span_font_size_change {
+    font-size: 17px;
+}
+.admin_link_btn_stle{
+    margin: 15px 0px -40px 125px;
+    background: #007bff;
+    color: white;
+}
+
+.ui-datepicker-calendar {
+   display: none;
+}
+
+#request_id_display{
+   font-size: 16px !important; /*07-02-2020 Archana Srishti*/
+}
+/*//Basheer on 28-05-2020*/S
+.hotel_booking_details_section.row { 
+    padding: 0px 15px;
+}
+.cash_advance_details_section.row { 
+    padding: 0px 15px;
+}
+.cash_advance_details_advance_section.row { 
+    padding: 0px 15px;
+}
+
+ /*chitra V on 01.07.2020*/
+   .rs-hd-colp{
+	display: flex;
+    justify-content: space-between;
+}
+.percent-rs {
+    display: flex;
+}
+.percent-rs label {
+    margin-left: 10px;
+}
+
+.rs45 {
+    width: 131px;
+    margin-right: 15px;
+}
+.itmwid20 {
+    width: 321px;
+    display: flex;
+}
+.wid150 {
+    width: 195px;
+}
+.txt56 select,.txt56 input{
+margin-bottom:19px;
+}
+/*chitra V on 01.07.2020*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*media start*/
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (max-width: 767px) {
+    .secnd_sec {
+        padding: 10px 6px;
+    }
+
+    .Third_sec {
+        padding: 0px 7px;
+    }
+
+    .cusmz {
+        padding: 0px 7px;
+        /* margin-top: 28px; */
+    }
+
+    .but button {
+        width: 100%;
+    }
+
+    .but {
+        padding: 0px 0px;
+        width: 100%;
+    }
+
+    .form-group .form-control::placeholder {
+        font-size: 14px;
+    }
+
+    .main_secrs {
+        background: #fff;
+        margin: 0px;
+        box-shadow: inherit;
+    }
+    /*karan edit*/
+    .accnt_hd {
+        padding: 8px 40px;
+    }
+
+    .flx-prpty {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .flx-prpty input {
+            margin: 0 5px;
+        }
+
+    .flx-width {
+        width: 50%;
+    }
+    /*karan edit end*/
+    .but {
+        padding: 0px 0px;
+        margin-bottom: 0px;
+    }
+
+    .fields {
+        padding: 8px 17px;
+    }
+
+    .drp {
+        padding: 8px 17px;
+    }
+
+    .sml_hd {
+        padding: 0px 0px;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+}
+
+@media only screen and (max-width: 480px) {
+
+
+    @media only screen and (max-width: 420px) {
+    }
+
+    @media only screen and (max-width: 375px) {
+    }
+
+    @media only screen and (max-width: 320px) {
+    }
+
+ 
+}

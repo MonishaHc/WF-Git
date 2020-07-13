@@ -1,0 +1,205 @@
+﻿
+@model WF_TOOL.Models.RequestModel
+@{
+    //********************************************************************* 17-02-2020 ARCHANA SRISHI
+    //COMMON SECTION - VERSION 0.0.1
+    //*********************************************************************
+    ViewBag.Title = "RequestHome_SAS";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    //string userType = ViewBag.store; // Check that the user have the provision for the Approver
+    //string[] splitData = userType.Split('~');
+    string app = Convert.ToString(Model.application_code);
+    var application = new WF_Tool.DataLibrary.Data.DropdownData().GetApplicationId(app);
+    //new WF_Tool.DataLibrary.Data.DropdownData().GetApplicationId(Model.applicationid.ToString());
+}
+@*@Html.HiddenFor(z => z.wftypeid, new { Value = 0 })*@
+@Html.HiddenFor(z => z.applicationid, new { Value = application.Application_Id, id = "application-list-drop-id" })
+@Html.HiddenFor(z => z.employeeid, new { Value = Model.employeeid, id = "emp_identify_id" })
+@Html.HiddenFor(z => z.application_code, new { Value = Model.application_code })
+@Html.HiddenFor(z => z.application, new { Value = application.Application_Name, id = "application_code_id" })
+
+
+@**********************************************************************17-02-2020 ARCHANA SRISHTI
+     COMMON STYLE - VERSION 0.0.1
+    **********************************************************************@
+<style>
+    .light_pink {
+        background: rgba(163, 165, 42, 0.88) !important;
+    }
+
+    .light_ash {
+        background: #808080;
+    }
+
+    .policy_style {
+        padding: 5px 10px 0px 15px;
+    }
+</style>
+@**********************************************************************17-02-2020 ARCHANA SRISHTI
+     COMMON PRIVACY POLICY  - VERSION 0.0.1
+    **********************************************************************@
+
+<script src="~/Scripts/RequestHome_SAS.js"></script>  @*//Basheer on 28-05-2020*@
+<div class="policy_style">
+    <p style="font-weight: bold;">
+        <label>Please click this link to go to Employee Privacy Notice</label>
+        <u> <a href="https://new.abb.com/privacy-notice/employee" target="_blank" class="click_event">Employee Privacy Notice</a></u>
+    </p>
+    <p style="text-align:right; font-weight: bold;">
+        <u> <a href="https://new.abb.com/privacy-notice/ar/employee" target="_blank" class="click_event">إشعار خصوصية الموظف</a></u>
+        <label>يرجى النقر على هذا الرابط للذهاب إلى إشعار خصوصية الموظفين</label>
+    </p>
+</div><!-- end of logo -->
+
+<div class="main_secrs">
+    @**********************************************************************17-02-2020 ARCHANA SRISHTI
+        COMMON-FIND EMPLOYEE DETAILS AND WF TYPE LISTING SECTION   - VERSION 0.0.1
+        **********************************************************************@
+    <div class="secnd_sec">
+        <div class="drp indes">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group grp_byrs my_cust">
+                        <label class="grpp_by_filrs" for="usr">Service Required</label>
+                        @Html.DropDownListFor(m => m.wftypeid, WF_Tool.DataLibrary.Data.DropdownData.LoadWFTypeList(Model.application_code), "--Choose--", new { @class = "wf-types-list-drop-id form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group grp_byrs my_cust">
+                        <label class="grpp_by_filrs" for="usr">Employee Id</label>
+                        @Html.DropDownListFor(m => m.employeeid, WF_Tool.DataLibrary.Data.DropdownData.GetAllEmployee(), new { @class = "employee-list-drop-id form-control" })
+                        @Html.ValidationMessageFor(z => z.employeeid)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>@*THE DOMAIN AND THE APPLICATION DETAILS SECLECTING SECTION*@
+
+    @**********************************************************************17-02-2020 ARCHANA SRISHTI
+        COMMON- EMPLOYEE DETAILS  LISTING SECTION   - VERSION 0.0.1
+         **********************************************************************@
+    <div class="print-MainEMP-Page">
+        <div class="Third_sec Attachment">
+            <div class="accntn">
+                <div class="accnt_hd" data-toggle="collapse" data-target="#form1">
+                    <div class="dw">
+                        <div class="fa fa-chevron-right rotate"></div>
+                    </div>
+                    <h6>Employee Details</h6>
+                </div>
+                <div class="fields collapse show" id="form1">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group my_cust_fiend">
+                                <label class="flds_fil" for="usr">Employee Name</label>
+                                <input type="text" class="form-control empName" id="usr" name="bday" readonly print_a_m2 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group my_cust_fiend">
+                                <label class="flds_fil" for="usr">Global Employee ID : Grade</label>
+                                <input type="text" class="form-control globalEmpId" id="usr" placeholder="" readonly print_a_m2 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group  my_cust_fiend">
+                                <label class="flds_fil" for="usr">Company</label>
+                                <input type="text" class="form-control companyEmp" id="usr" placeholder="" readonly print_a_m3 />
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group t my_cust_fiend">
+                                <label class="flds_fil" for="usr">Job Tittle</label>
+                                <input type="text" class="form-control empJobTitle" id="usr" placeholder="" readonly print_a_m4 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group t my_cust_fiend">
+                                <label class="flds_fil" for="usr">Department</label>
+                                <input type="text" class="form-control empDepartment" id="usr" placeholder="" readonly print_a_m5 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group t my_cust_fiend">
+                                <label class="flds_fil" for="usr">Business Line</label>
+                                <input type="text" class="form-control empBusinessLine" id="usr" placeholder="" readonly print_a_m6 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group t my_cust_fiend">
+                                <label class="flds_fil" for="usr">Cost Center</label>
+                                <input type="text" class="form-control empCostCenter" id="usr" placeholder="" readonly print_a_m7 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group t my_cust_fiend">
+                                <label class="flds_fil" for="usr">Mobile phone</label>
+                                <input type="text" class="form-control empMobileNo" id="usr" placeholder="" readonly print_a_m8 />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group t my_cust_fiend">
+                                <label class="flds_fil" for="usr">Telephone</label>
+                                <input type="text" class="form-control empTelephone" id="usr" placeholder="" readonly print_a_m9 />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>@*FIRST FROM ABOUT THE EMPLOYEE DETAILS*@
+    </div>
+
+    @**********************************************************************17-02-2020 ARCHANA SRISHTI
+        COMMON BUTTON SECTION   - VERSION 0.0.1
+        **********************************************************************@
+    <section class="Third_sec process-btn-section">
+        <div class="buttn-sec">
+            <div class="listing-iteams">
+                <div class="itms_des">
+                    <label>Application Name:</label>
+                    <span class="application_name"></span>
+                </div>
+                <div class="itms_des">
+                    <label>Status:</label>
+                    <span class="request_status_now"></span>
+                </div>
+            </div>
+            <div class="buttn-inner">
+                <div class="btns-all">
+                    <ul>
+                        <li><button id="save_request_btn"><img src="~/Content/images/button/Save.png" class="request_buttons" style="width:20px !important;">Save</button> </li>
+                        <li><button id="edit_request_btn" style="display:none;"><img src="~/Content/images/button/SaveChange.png" class="request_buttons" style="width:20px !important;">SaveChanges</button> </li>  @*Basheer on 23-01-2020*@
+                        <li><button id="submit_request_btn" style="display:none;"><img src="~/Content/images/button/Submit.png" class="request_buttons" style="width:20px !important;">Submit</button> </li>
+                        <li><button id="forward_request_btn"><img src="~/Content/images/button/e-Forward.png" class="request_buttons" style="width:20px !important;">eForward</button> </li>
+                        <li><button id="print_request_btn"><img src="~/Content/images/button/Print.png" class="request_buttons" style="width:20px !important;">Print</button> </li>
+                        <li><button id="cancel_request_btn" style="display:none;"><img src="~/Content/images/button/Cancel.png" class="request_buttons" style="width:20px !important;">Cancel</button> </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>@*ALL BUTTONS ARE HERE*@
+
+    @**********************************************************************17-02-2020 ARCHANA SRISHTI
+        COMMON- WF TYPE LISTING  LISTING SECTION   - VERSION 0.0.1
+         **********************************************************************@
+    <div class="view_with_wftype_id print-current-Page"></div>@*THE REQUEST CONTENT LISTING HERE*@
+
+    @**********************************************************************17-02-2020 ARCHANA SRISHTI
+        COMMON- E FORWARD EMPLOYEE LISTING SECTION   - VERSION 0.0.1
+         **********************************************************************@
+    <div class="modal fade" id="view_forward_List">
+    </div>
+    <div class="Third_sec">
+    </div>
+
+    @*<div class="modal fade" id="view_print_List">
+        </div>*@
+
+</div>
+
+
+
+
+

@@ -1,0 +1,64 @@
+﻿
+@model WF_TOOL.Models.WaitingRequestingList
+@{
+
+}
+<thead>
+    <tr>
+        @*14-02-2020 Basheer*@
+        <th></th>
+        <th> Sl No</th>
+        @*<th> Product Group</th>*@
+        <th> WF Type </th>
+        <th> Date </th>
+        <th> Request Id</th>
+        <th> Request From</th>
+        <th> Employee</th>
+        <th> Status</th>
+        <th> Approver</th>
+       
+    </tr>
+</thead>
+<tbody>
+@if (Model.list.Count == 0)
+{
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+}
+else
+{
+    foreach (var item in Model.list)
+    {
+        <tr>
+            <td>
+                @*14-02-2020 Basheer*@
+                <button class="request_details btn" style="background:#a8e9cb" data-view-id="1" data-request-id="@item.req_id" data-process-id="@item.process_table_id" data-button-name="@item.button_type" data-role-id="@item.roleid"><i class="fas fa-info-circle"></i></button>
+                @*added data-view-id="1" to check the buttons for request 0 means only show print,cancel,eforward..1 means can show all needed buttons*@
+                @*Basheer on 27-01-2020*@
+            </td>
+            <td>@item.count</td>
+            @*<td>@item.pro_group</td>*@
+            <td>@item.wf_type_name (@item.wf_type_id)</td>
+            <td>@item.date</td>
+            <td>@item.application-@item.request_id  </td>
+            <td>@item.employee_local_id </td>
+            <td>@item.employee_name </td>
+            <td>@item.final_status</td>
+            <td>@item.current_actor</td>
+            @*<td>
+                <button class="request_details btn" style="background:#a8e9cb" data-view-id="1" data-request-id="@item.req_id" data-process-id="@item.process_table_id" data-button-name="@item.button_type"><i class="fas fa-info-circle"></i></button>
+                @*added data-view-id="1" to check the buttons for request 0 means only show print,cancel,eforward..1 means can show all needed buttons
+            </td>*@
+        </tr>
+    }
+}
+</tbody>

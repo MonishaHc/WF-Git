@@ -1,0 +1,179 @@
+﻿@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>*@
+@model WF_TOOL.Models.RequestModel
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    Model.ad_account = Convert.ToString(Session["adAccount"]); // 12-02-2020 Archana
+}
+
+@Html.HiddenFor(z => z.ad_account, new { Value = Model.ad_account })
+<style>
+    .list_size {
+        font-size: 12px;
+    }
+</style>
+<div class="form-group" style="text-align:left;">
+    <label style="font-size:15px!important;">Version 0.16.04- (13-07-2020)</label>
+    @*Preema Changed version on 30-06-2020 Version 0.14.04- (29-06-2020)*@
+    @*Alena Changed version on 01-07-2020 Version 0.14.05- (01-07-2020)*@
+    @*Preema Changed version on 01-07-2020 Version 0.14.06- (01-07-2020)*@
+    @*Preema Changed version on 01-07-2020 Version 0.14.07- (01-07-2020)*@
+    @*Terrin Changed version on 01-07-2020 Version 0.14.08- (01-07-2020)*@
+    @*Preema Changed version on 02-07-2020 Version 0.14.09- (02-07-2020)*@
+    @*Preema Changed version on 03-07-2020 Version 0.15.00- (02-07-2020)*@
+    @*George Changed version on 06-07-2020 Version 0.15.02- (06-07-2020)*@
+    @*Terrin  Changed version on 06-07-2020 Version 0.15.02- (06-07-2020)*@
+    @*Preema  Changed version on 06-07-2020 Version 0.15.03- (06-07-2020)*@
+    @*Alena  Changed version on 07-07-2020 Version 0.15.04- (07-07-2020)*@
+    @*chitra  Changed version on 07-07-2020 Version 0.15.05- (07-07-2020)*@
+     @*Terrin  Changed version on 07-07-2020 Version 0.15.06- (07-07-2020)*@
+    @*chitra Changed version on 12-07-2020 Version 0.16.00- (10-07-2020)*@
+    @*George Changed version on 13-07-2020 Version 0.16.02- (13-07-2020)*@
+</div>
+<div>
+    <button class="btn admin_link_btn_stle">Admin</button>
+</div>
+<section class="login-reg">
+    <div class="container">
+        <div class="row" style="margin-top:50px;">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active list_size" id="v-pills-hr-tab" data-toggle="pill" href="#v-pills-hr" role="tab" aria-controls="v-pills-hr" aria-selected="true">HUMAN RESOURCE SERVICE (HR)</a>
+                    <a class="nav-link list_size" id="v-pills-is-tab" data-toggle="pill" href="#v-pills-is" role="tab" aria-controls="v-pills-is" aria-selected="false">INFORMATION SYSTEM (IS)</a>
+                    <a class="nav-link list_size" id="v-pills-sa-tab" data-toggle="pill" href="#v-pills-sa" role="tab" aria-controls="v-pills-sa" aria-selected="false">SHARED ACCOUNTING (SA)</a>
+                    <a class="nav-link list_size" id="v-pills-bl-tab" data-toggle="pill" href="#v-pills-bl" role="tab" aria-controls="v-pills-bl" aria-selected="false">BUSINESS LINE (BL)</a>
+                    <a class="nav-link list_size" id="v-pills-pl-tab" data-toggle="pill" href="#v-pills-pl" role="tab" aria-controls="v-pills-pl" aria-selected="false">PROCUREMENT & LOGISTIC (PL)</a>
+                </div>
+            </div>
+
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+
+                    <div class="tab-pane fade show active" id="v-pills-hr" role="tabpanel" aria-labelledby="v-pills-hr-tab">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="nav flex-column nav-pills" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link list_size active" id="v-pills-er-tab" data-toggle="pill" href="#v-pills-er" role="tab" aria-controls="v-pills-er" aria-selected="true">EXPENSE REPORT (ER)</a>
+                                    <a class="nav-link list_size" id="v-pills-gr-tab" data-toggle="pill" href="#v-pills-gr" role="tab" aria-controls="v-pills-gr" aria-selected="false">GOVERNMENT RELATIONS (GR)</a>
+                                    <a class="nav-link list_size" id="v-pills-pp-tab" data-toggle="pill" href="#v-pills-pp" role="tab" aria-controls="v-pills-pp" aria-selected="false">PERSONAL AND PAYROLL (PP)</a>
+                                    <a class="nav-link list_size" id="v-pills-rc-tab" data-toggle="pill" href="#v-pills-rc" role="tab" aria-controls="v-pills-rc" aria-selected="false">RECRUITMENT (RC)</a>
+                                    <a class="nav-link list_size" id="v-pills-ta-tab" data-toggle="pill" href="#v-pills-ta" role="tab" aria-controls="v-pills-ta" aria-selected="false">TRAVEL AUTHORIZATION (TA)</a>
+                                    <a class="nav-link list_size" id="v-pills-tr-tab" data-toggle="pill" href="#v-pills-tr" role="tab" aria-controls="v-pills-tr" aria-selected="false">TRAINING (TR)</a>
+                                    <a class="nav-link list_size" id="v-pills-ts-tab" data-toggle="pill" href="#v-pills-ts" role="tab" aria-controls="v-pills-ts" aria-selected="false">TIME SHEETS (TS)</a>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="tab-content" id="v-pills-tabContent2">
+                                    <div class="tab-pane fade show active" id="v-pills-er" role="tabpanel" aria-labelledby="v-pills-er-tab">
+                                        <a href="/Request/RequestHome/ER" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/ER" class="btn-block">View Request</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-gr" role="tabpanel" aria-labelledby="v-pills-gr-tab">
+                                        <a href="/Request/RequestHome/GR" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/GR" class="btn-block">View Request</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-pp" role="tabpanel" aria-labelledby="v-pills-pp-tab">
+                                        <a href="/Request/RequestHome/PP" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/PP" class="btn-block">View Request</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-rc" role="tabpanel" aria-labelledby="v-pills-rc-tab">
+                                        <a href="/Request/RequestHome/RC" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/RC" class="btn-block">View Request</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-ta" role="tabpanel" aria-labelledby="v-pills-ta-tab">
+                                        <a href="/Request/RequestHome/TA" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/TA" class="btn-block">View Request</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-tr" role="tabpanel" aria-labelledby="v-pills-tr-tab">
+                                        <a href="/Request/RequestHome/TR" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/TR" class="btn-block">View Request</a>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-ts" role="tabpanel" aria-labelledby="v-pills-ts-tab">
+                                        <a href="/Request/RequestHome/TS" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/TS" class="btn-block">View Request</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*--------------------------------------------------------------HR-----------------------------------------------------------------*@
+                    <div class="tab-pane fade show" id="v-pills-is" role="tabpanel" aria-labelledby="v-pills-is-tab">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="nav flex-column nav-pills" id="v-pills-tab2" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link list_size active" id="v-pills-er-tab1" data-toggle="pill" href="#v-pills-er" role="tab" aria-controls="v-pills-er" aria-selected="true">IS SERVICES (IS)</a>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="tab-content" id="v-pills-tabContent3">
+                                    <div class="tab-pane fade show active" id="v-pills-er" role="tabpanel" aria-labelledby="v-pills-er-tab1">
+                                        <a href="/Request/RequestHome/IS" class="btn-block">Create Request</a>
+                                        <a href="/Employee/MyRequest/IS" class="btn-block">View Request</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*--------------------------------------------------------------IS-----------------------------------------------------------------*@
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    $(document).on('click', '#btn-login', function () {
+        $('#btn-login').prop('disabled', true);
+        var id = $('.password_id').val();
+        if (id != '') {
+            //$.ajax({
+            //    url: '/Account/CheckCredentials/' + id,
+            //    dataType: 'JSON',
+            //    success: function (response) {
+            //        if (response.status) {
+            //            window.location.href = '/Request/RequestHome?id=' + id;
+            //        }
+            //        else {
+            //            toastrError(response.msg);
+            //        }
+            //    },
+            //});
+            window.location.href = '/Request/RequestPreHome?id=' + id;
+        }
+        else {
+            $('.password_id').focus();
+            toastrError('Please enter the UserId ...');
+        }
+    });
+
+    $("input").keyup(function () {
+        $('#btn-login').prop('disabled', false);
+    });
+
+    $(document).on('click', '.admin_link_btn_stle', function () {
+        var id = $('#ad_account').val();
+        $.ajax({
+            url: '/Admin/IsAdmin/' + id,
+            dataType: 'JSON',
+            success: function (response) {
+                if (response.status) {
+                    window.location.href = '/Admin/CountryHome?id=' + id;
+                }
+                else {
+                    toastrError(response.msg);
+                }
+            },
+        });
+
+    });
+
+</script>

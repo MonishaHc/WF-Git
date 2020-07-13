@@ -1,0 +1,208 @@
+﻿@model WF_TOOL.Models.EmployeeModel
+@{
+    ViewBag.Title = "MyApproval";
+    Layout = "~/Views/Shared/_ViewRequestLayout.cshtml";
+}
+@Html.HiddenFor(z => z.emp_localid, new { Value = Model.emp_localid, id = "employee_local_id" })
+@Html.HiddenFor(z => z.application_code, new { Value = Model.application_code, id = "application_code_id" })
+@Html.HiddenFor(z => z.ad_account, new { Value = Model.ad_account, id = "ad_account_id" })
+<div class="main_iteams">
+    <div class="inner_box">
+        @*<div class="txt_itms">*@
+        <span class="span_font_size_change">Requests Waiting For My Approval </span>
+        <div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group grp_byrs my_cust">
+                        <label class="grpp_by_filrs" for="usr">Year</label>
+                        <select id="year" class="dropdownHeight form-control"></select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group grp_byrs my_cust">
+                        <label class="grpp_by_filrs" for="usr">Approval Type</label>
+                        @Html.DropDownListFor(m => m.approvaltype, (new[] { new SelectListItem { Text = "Pending", Value = "0" }, new SelectListItem { Text = "Approved", Value = "1" } }), new { @class = "myapproval-type-drop-id dropdownHeight form-control" })
+                        <span style="color:red;"> @Html.ValidationMessageFor(z => z.approvaltype)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="txt_itms search-country">
+        <div class="form-group my_cust_fiend">
+            <div class="drp-selectbox">
+                <label class="grpp_by_fil" for="usr">Search By</label>
+                <select id="group" class="form-control cust_frm searchType_class">
+                    <option value="1">WF Type</option>
+                    <option value="2">Status</option>
+                    <option value="3">Employee Id</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group my_cust_fiend">
+            @*<input class="form-control searchitem" type="text" placeholder="Search" aria-label="Search">*@
+            <input type="text" class="form-control searchitem canEditThis" id="usr" placeholder="">
+            @Html.DropDownListFor(m => m.status, WF_Tool.DataLibrary.Data.DropdownData.GetAllStatusRequestSearch(), "--Choose--", new { @class = "statusid form-control", @style = "display:none" })
+
+        </div>
+    </div>
+
+
+    @*<div id="my-approval-window">
+
+        </div>*@
+
+    @*//Basheer commented above code and written below code to get the table properties on 14-02-2020*@
+    <div class="request_list_with_process_type">
+        <table class="table table-responsive" id="my-approval-window" style="margin-top:20px;"></table>
+    </div>
+</div>
+
+
+<script>
+
+    window.onhashchange = function () {
+        var employeeId = $('#employee_local_id').val();
+        SetYearList();
+        ShowApprovaldetails(0, employeeId);
+    }
+
+
+    $(document).ready(function () {
+        var employeeId = $('#employee_local_id').val();
+        SetYearList();
+        ShowApprovaldetails(0, employeeId);
+        //P016-Internal Transfer(Preema)
+        //Remove the the specified local storage item:
+        sessionStorage.removeItem("is_reloaded");
+       
+    });
+
+    function SetYearList() {
+        var start = 2020;
+        var end = new Date().getFullYear();
+        var options = "";
+        for (var year = start ; year <= end; year++) {
+            options += "<option>" + year + "</option>";
+        }
+        document.getElementById("year").innerHTML = options;
+    }
+
+    function ShowApprovaldetails(approvaltype, employeeid) {
+        var id = approvaltype + "~" + employeeid;
+        var app = $('#application_code_id').val();
+        var year = $('#year').val();
+        $.ajax({
+            url: '/Employee/ListMyWaitingRequests/' + id + '~' + app + '~' + year,
+            //url: '/Employee/ListMyWaitingRequests/' + id + '~' + app ,
+            type: "GET",
+            dataType: 'html',
+            cache: false,  //Basheer on 12-02-2020 to work ajax after backbutton click
+            success: function (data) {
+                $('#my-approval-window').html('');
+                $('#my-approval-window').html(data);
+                $(".se-pre-con").hide(); //17-02-2020 Archana Srishti
+            }
+        });
+
+    }
+    //Detailed button
+    $(document).on('click', '.request_details', function () {
+         
+        var source = $(this);
+        var requestId = $(source).attr('data-request-id');
+        var button = $(source).attr('data-button-name');
+        var process_id = $(source).attr('data-process-id');
+        var employeeId = $('#employee_local_id').val();
+        var dataviewid = $(source).attr('data-view-id');
+        var ad_id = $('#ad_account_id').val();
+        var roleid = $(source).attr('data-role-id'); //Basheer on 28-05-2020 for Ta request
+        //var id = requestId + '~' + employeeId + '~' + button + '~' + process_id + '~' + dataviewid + '~' + ad_id;
+        //var url = '/Request/DetailedRequest?id=' + id;
+        //window.open(url, '_blank');
+        //window.open(url);
+        //window.location.href = '/Request/DetailedRequest?id=' + id;
+
+        // 12-02-2020 Archana 
+        var xorKey = 2020;
+        var id = requestId + '|' + roleid + '~' + employeeId + '~' + button + '~' + process_id + '~' + dataviewid + '~' + ad_id; //Basheer on 28-05-2020
+
+        var result = "";
+        for (i = 0; i < id.length; ++i) {
+            result += String.fromCharCode(xorKey ^ id.charCodeAt(i));
+        }
+        window.location.href = '/Request/DetailedRequest?id=' + result;
+    });
+
+    $(document).on('change', '.myapproval-type-drop-id', function () {
+        var approvaltype = $(this).val();
+        var employeeId = $('#employee_local_id').val();
+        ShowApprovaldetails(approvaltype, employeeId);
+    });
+
+
+    //Basheer on 13-02-2020 To add filters for search
+
+    $(document).on('change', '.searchType_class', function () {
+        var searchItem = $('.searchitem').text('');
+        var searchtype = $('.searchType_class :selected').val();
+        if (searchtype == 2) {
+            $('.statusid').css('display', 'block');
+            $('.searchitem').css('display', 'none');
+        }
+        else {
+            $('.statusid').css('display', 'none');
+            $('.searchitem').css('display', 'block');
+        }
+
+    });
+
+    $('.searchitem').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            var searchItem = $('.searchitem').val();
+            if (searchItem != '') {
+                Search(searchItem);
+                //var searchtype = $('.searchType_class :selected').val();
+                //var approvaltype = $('.myapproval-type-drop-id').val();
+                //var employeeId = $('#employee_local_id').val();
+                //var year = $('#year').val();
+                //var app = $('#application_code_id').val();
+                //ShowApprovaldetailssearch(approvaltype, employeeId, app, year, searchtype, searchItem);
+            }
+            else {
+                //ShowApprovaldetailssearch(approvaltype, employeeId, app, year, searchtype, searchItem);
+                Search(searchItem);
+            }
+        }
+    });
+
+    function ShowApprovaldetailssearch(approvaltype, employeeId, app, year, searchtype, searchItem) {
+        $.ajax({
+            url: '/Employee/ListMyWaitingRequestsSearch/' + approvaltype + '~' + employeeId + '~' + app + '~' + year + '~' + searchtype + '~' + searchItem,
+            type: "GET",
+            dataType: 'html',
+            success: function (data) {
+                $('#my-approval-window').html('');
+                $('#my-approval-window').html(data);
+
+            }
+        });
+    }
+
+    function Search(searchItem) {
+        var searchtype = $('.searchType_class :selected').val();
+        var approvaltype = $('.myapproval-type-drop-id').val();
+        var employeeId = $('#employee_local_id').val();
+        var year = $('#year').val();
+        var app = $('#application_code_id').val();
+        ShowApprovaldetailssearch(approvaltype, employeeId, app, year, searchtype, searchItem);
+    }
+
+    $(document).on('change', '.statusid', function () {
+        var searchItem = $('.statusid').val();
+        Search(searchItem);
+    });
+</script>
+
